@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Conference photo upload page">
+  <title>ICIEA 2026 | Conference Photos</title>
+  <style>
+    :root { --navy:#092c4c; --blue:#087cc3; --gold:#f6b73c; --ink:#173047; --paper:#fff; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; color:var(--ink); background:radial-gradient(circle at 8% 5%,#c9efff 0,transparent 24rem),radial-gradient(circle at 92% 92%,#ffe7a9 0,transparent 25rem),linear-gradient(145deg,#eef8fd,#fff 55%,#fff5dc); }
+    main { width:min(680px,calc(100% - 32px)); margin:0 auto; padding:28px 0 42px; }
+    .language { display:flex; justify-content:flex-end; gap:8px; margin-bottom:24px; }
+    .language button { border:1px solid #b9c9d4; border-radius:999px; padding:7px 12px; cursor:pointer; background:#fff; color:var(--navy); font-weight:700; }
+    .language button[aria-pressed="true"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+    .card { position:relative; overflow:hidden; background:rgba(255,255,255,.94); border:1px solid #dce8ef; border-radius:28px; box-shadow:0 18px 55px rgba(9,44,76,.15); padding:clamp(28px,7vw,52px); text-align:center; }
+    .card::before { content:""; position:absolute; width:190px; height:190px; right:-100px; top:-105px; border-radius:50%; background:linear-gradient(135deg,#087cc3,#6ad4ff); opacity:.14; }
+    .card > * { position:relative; }
+    .camera { width:62px; height:62px; display:grid; place-items:center; margin:0 auto 16px; border-radius:20px; color:#fff; background:linear-gradient(135deg,#056cae,#16b4dd); box-shadow:0 10px 22px rgba(8,124,195,.28); font-size:30px; }
+    .eyebrow { color:var(--blue); font-size:.8rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:12px 0 14px; color:var(--navy); font-size:clamp(2rem,7vw,3.35rem); line-height:1.04; }
+    .lead { max-width:500px; margin:0 auto 28px; font-size:1.08rem; }
+    .actions { display:grid; gap:12px; margin:28px auto 0; max-width:430px; }
+    .button { display:block; border-radius:14px; padding:16px 18px; text-decoration:none; font-weight:800; transition:transform .15s, box-shadow .15s; }
+    .button:hover { transform:translateY(-2px); box-shadow:0 9px 20px rgba(9,44,76,.18); }
+    .primary { color:#fff; background:linear-gradient(135deg,#0576ba,#159ed5); }
+    .upload-link.is-locked { pointer-events:none; cursor:not-allowed; opacity:.48; box-shadow:none; transform:none; }
+    .secondary { color:var(--navy); background:#fff; border:2px solid #bfd2df; }
+    .instagram { color:#fff; border:0; background:linear-gradient(125deg,#6f35bb,#d8329c 52%,#f3a144); }
+    .tagline { display:inline-flex; gap:7px; align-items:center; margin:0 0 20px; padding:7px 12px; border-radius:999px; background:#eaf7ff; color:#056cae; font-size:.81rem; font-weight:800; }
+    .consent { margin:25px auto 0; max-width:520px; padding:17px; border:2px solid #efb33c; border-radius:14px; background:#fff8e7; text-align:left; }
+    .consent strong { display:block; margin-bottom:7px; color:#734700; }
+    .consent label { display:flex; align-items:flex-start; gap:10px; cursor:pointer; font-size:.93rem; }
+    .consent input { width:19px; height:19px; flex:0 0 auto; margin-top:3px; accent-color:var(--blue); }
+    .privacy-link { color:#075f99; font-weight:700; }
+    .venue { margin:22px auto 0; max-width:520px; padding:18px; border-radius:16px; background:#f0f8fc; text-align:left; }
+    .venue h2 { margin:0 0 5px; color:var(--navy); font-size:1.12rem; }
+    .venue-intro { margin:0 0 13px; color:#526a7b; font-size:.9rem; }
+    .venue-grid { display:grid; gap:10px; }
+    .venue-card { padding:14px; border-radius:12px; background:#fff; border:1px solid #d9e8ef; }
+    .venue-card strong { color:var(--navy); }
+    .venue-card p { margin:5px 0 10px; font-size:.89rem; }
+    .map-link { display:inline-block; padding:7px 10px; border-radius:9px; background:#e2f3fc; color:#056cae; font-size:.85rem; font-weight:800; text-decoration:none; }
+    .note { margin:28px auto 0; max-width:520px; padding-top:21px; border-top:1px solid #dce8ef; color:#526a7b; font-size:.9rem; text-align:left; }
+    .footer { margin:18px 0 0; font-size:.8rem; text-align:center; color:#617787; }
+    [hidden] { display:none!important; }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="language" aria-label="Language selector">
+      <button type="button" data-language="en" aria-pressed="true">English</button>
+      <button type="button" data-language="zh" aria-pressed="false">中文</button>
+    </nav>
+
+    <section class="card" lang="en" data-content="en">
+      <div class="camera" aria-hidden="true">📸</div>
+      <div class="eyebrow">ICIEA 2026 · University of Catania</div>
+      <h1>Share your photos</h1>
+      <p class="lead">Did you take photos during ICIEA 2026? Upload them here so we can collect the event memories in one place.</p>
+      <p class="tagline">3–6 August 2026 · Catania, Italy</p>
+      <p class="tagline">Capture · Share · Remember</p>
+      <div class="consent">
+        <strong>Important — privacy and publication</strong>
+        <label><input type="checkbox" class="consent-check"><span>I confirm that I have the right to upload these photos and that they do not infringe anyone’s privacy or image rights. I accept that the conference organisers may select, store and publish them in the event photo gallery, on the event/organisers’ websites and social-media channels, and in communication materials. I understand that this may make the photos publicly accessible. <a class="privacy-link" href="PASTE_YOUR_PRIVACY_NOTICE_LINK_HERE" target="_blank" rel="noopener">Read the privacy notice</a>.</span></label>
+      </div>
+      <div class="actions">
+        <a class="button primary upload-link is-locked" href="https://studentiunict-my.sharepoint.com/:f:/g/personal/giuseppe_sutera_unict_it/IgBNe3b0EK44SqincrmgELc8Aa-hHbrfd8SUWty5WD0_5_g?web=1" target="_blank" rel="noopener" aria-disabled="true">Upload photos</a>
+        <a class="button secondary" href="PASTE_YOUR_CONFERENCE_PROGRAM_LINK_HERE" target="_blank" rel="noopener">View conference programme</a>
+        <a class="button secondary instagram" href="https://www.instagram.com/ingsuteragiuseppe/" target="_blank" rel="noopener">Follow us on Instagram — stories &amp; updates</a>
+      </div>
+      <section class="venue">
+        <h2>🧭 Venue guide</h2><p class="venue-intro">Maps lead to the building entrance; use the room list to find the floor.</p>
+        <div class="venue-grid">
+          <div class="venue-card"><strong>Edificio 14</strong><p>Aula Magna, D02, D03, and Poster Session — Ground floor<br>D21, D23 — Second floor<br>D31, D33 — Third floor</p><a class="map-link" href="https://maps.app.goo.gl/CofScGgYVn3MkbLe8" target="_blank" rel="noopener">Open Edificio 14 in Maps</a></div>
+          <div class="venue-card"><strong>Tetti Verdi · T1</strong><p>T1 — Ground floor</p><a class="map-link" href="https://maps.app.goo.gl/nLZdHBNegSGPKM5JA" target="_blank" rel="noopener">Open Tetti Verdi in Maps</a></div>
+        </div>
+      </section>
+      <p class="note">No account is needed to upload. The upload button is enabled only after accepting the statement above.</p>
+    </section>
+
+    <section class="card" lang="zh-CN" data-content="zh" hidden>
+      <div class="camera" aria-hidden="true">📸</div>
+      <div class="eyebrow">ICIEA 2026 · 卡塔尼亚大学</div>
+      <h1>分享您的照片</h1>
+      <p class="lead">您在 ICIEA 2026 期间拍了照片吗？请在这里上传，让我们将活动的精彩瞬间汇集在一起。</p>
+      <p class="tagline">2026 年 8 月 3–6 日 · 意大利卡塔尼亚</p>
+      <p class="tagline">记录 · 分享 · 珍藏</p>
+      <div class="consent">
+        <strong>重要提示：隐私与照片发布</strong>
+        <label><input type="checkbox" class="consent-check"><span>我确认有权上传这些照片，且照片不侵犯任何人的隐私权或肖像权。我同意会议主办方可选择、保存并在活动照片集、活动/主办方网站、社交媒体以及宣传材料中发布这些照片。我了解这可能使照片公开可见。<a class="privacy-link" href="PASTE_YOUR_PRIVACY_NOTICE_LINK_HERE" target="_blank" rel="noopener">阅读隐私声明</a>。</span></label>
+      </div>
+      <div class="actions">
+        <a class="button primary upload-link is-locked" href="https://studentiunict-my.sharepoint.com/:f:/g/personal/giuseppe_sutera_unict_it/IgBNe3b0EK44SqincrmgELc8Aa-hHbrfd8SUWty5WD0_5_g?web=1" target="_blank" rel="noopener" aria-disabled="true">上传照片</a>
+        <a class="button secondary" href="PASTE_YOUR_CONFERENCE_PROGRAM_LINK_HERE" target="_blank" rel="noopener">查看会议日程</a>
+        <a class="button secondary instagram" href="https://www.instagram.com/ingsuteragiuseppe/" target="_blank" rel="noopener">关注我们的 Instagram，查看限时动态和最新消息</a>
+      </div>
+      <section class="venue">
+        <h2>🧭 场地与教室指南</h2><p class="venue-intro">地图会带您到建筑入口；请根据教室列表找到相应楼层。</p>
+        <div class="venue-grid">
+          <div class="venue-card"><strong>14 号楼</strong><p>Aula Magna、D02、D03 和海报展示 — 一层<br>D21、D23 — 二层<br>D31、D33 — 三层</p><a class="map-link" href="https://maps.app.goo.gl/CofScGgYVn3MkbLe8" target="_blank" rel="noopener">在地图中打开 14 号楼</a></div>
+          <div class="venue-card"><strong>Tetti Verdi · T1</strong><p>T1 — 一层</p><a class="map-link" href="https://maps.app.goo.gl/nLZdHBNegSGPKM5JA" target="_blank" rel="noopener">在地图中打开 Tetti Verdi</a></div>
+        </div>
+      </section>
+      <p class="note">上传无需注册账户。接受以上声明后，上传按钮才会启用。</p>
+    </section>
+    <p class="footer">Thank you for contributing · 感谢您的分享</p>
+  </main>
+  <script>
+    const buttons = document.querySelectorAll('[data-language]');
+    const panels = document.querySelectorAll('[data-content]');
+    function setLanguage(language) {
+      document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+      panels.forEach(panel => panel.hidden = panel.dataset.content !== language);
+      buttons.forEach(button => button.setAttribute('aria-pressed', button.dataset.language === language));
+    }
+    buttons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language)));
+    document.querySelectorAll('.consent-check').forEach(check => {
+      check.addEventListener('change', () => {
+        const panel = check.closest('[data-content]');
+        const upload = panel.querySelector('.upload-link');
+        upload.classList.toggle('is-locked', !check.checked);
+        upload.setAttribute('aria-disabled', String(!check.checked));
+      });
+    });
+  </script>
+</body>
+</html>
